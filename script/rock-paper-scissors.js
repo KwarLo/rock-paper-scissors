@@ -1,8 +1,13 @@
 
+const score = {
+  wins: 0,
+  losses: 0,
+  ties: 0
+};
 
 function playGame(playerMove) {
 
-  const computerMove = selectComputerMover();
+  const computerMove = selectComputerMove();
   let result = '';
 
   if(playerMove === 'rock') {
@@ -33,11 +38,20 @@ function playGame(playerMove) {
     }
 
   }
+
+  if(result === 'You Win.') {
+    score.wins++;
+  } else if(result === 'You Lose.') {
+    score.losses++;
+  } else if(result === 'Tie.') {
+    score.ties++;
+  }
   
-    alert(`You selected: ${playerMove}. Computer Selected: ${computerMove}. Results: ${result}`);
+    alert(`You selected: ${playerMove}. Computer Selected: ${computerMove}. Results: ${result}
+      Wins: ${score.wins}. Losses: ${score.losses}. Ties: ${score.ties}`);
 }
 
-function selectComputerMover() {
+function selectComputerMove() {
   const randomNumber = Math.random();
   let computerMove = '';
 
